@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SecurityInAOMG.Models.UserAccount>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Login In</h2>
+
+
+    <input type="text" id="txUID" placeholder="Username" /><br />
+    <input type="password" id="txPWD" placeholder="Password" /><br />
+    <div id="btbLogin" onClick="Login()" style="width:80px; text-align:center; background: #666; color:#fff; cursor: pointer">LOGIN</div>
+    <p id="ms" style="color:red"></p>
+
+    <script type="text/javascript">
+            var isRunning = false;
+            function Login() {
+                console.log("freak");
+                if (!isRunning) {
+                    isRunning = true
+                    var uid = $('#txUID').val();
+                    var password = $('#txPWD').val();
+                    if (uid == '' || password == '') {
+                        $('#ms').html('Vui lòng đăng nhập tài khoản và mật khẩu');
+                        isRunning = false;
+                        console.log('without' + uid);
+                        console.log('without' + password);
+                    } else {
+                        var form = new FormData();
+                        form.append("uid", uid);
+                        form.append("password", password);
+                        console.log('with' + uid);
+                        console.log('with' + password);
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", domain + '/Login/CheckLogin', true)
+                        xhr.timeout = 30000;
+                        xhr.ontimeout = function () {
+                            $('ms').html('Có khả năng mạng xảy ra vấn đề! Vui long F5 để thưc lại');
+                            isRunning = false;
+                        }
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                var r = xhr.responseText;
+                                var j = JSON.parse(r);
+                                if (j.Data.status == "OK") {
+                                    ///
+                                    window.location = '/Home/Index';
+                                } else {
+                                    $('#ms').html('sai tài khoản và mật khẩu');
+                                }
+                                isRunning = false;
+                            }
+                        }
+                        xhr.send(form);
+                    }
+                }
+            }
+    </script>
+</body>
+</html>
