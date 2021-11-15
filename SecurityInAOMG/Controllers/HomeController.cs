@@ -7,11 +7,13 @@ using SecurityInAOMG.Models;
 using System.Data.SqlClient;
 
 
+
 namespace SecurityInAOMG.Controllers
 {
     public class HomeController : Controller
     {
         SqlConnection con = new SqlConnection("data source=JAYSON\\SQLEXPRESS; database=AOMG; integrated security=SSPI");
+
         public ActionResult Index()
         {
 
