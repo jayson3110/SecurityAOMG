@@ -43,6 +43,33 @@ namespace SecurityInAOMG.Controllers
 
         }
 
+        public ActionResult ResgisterForAdmin()
+        {
+            return View();
+        }
+
+
+        public ActionResult ResgisterForAdmin(UserAccount user)
+        {
+
+            con.Open();
+            cmd.CommandText = "insert into Users  values(@userId,@username, @password, 'admin') ";
+
+            //if (Session["user"] == null)
+            //{
+            cmd.Parameters.AddWithValue("@userId", user.userId);
+            cmd.Parameters.AddWithValue("@username", user.username);
+            cmd.Parameters.AddWithValue("@password", user.password);
+
+            cmd.Connection = con;
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+
+            //}
+            return View();
+
+        }
 
     }
 }

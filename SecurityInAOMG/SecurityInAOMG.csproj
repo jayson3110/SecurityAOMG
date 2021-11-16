@@ -169,6 +169,7 @@
     <Content Include="Views\Home\userView.cshtml" />
     <Content Include="Views\Shared\_View.cshtml" />
     <Content Include="Views\Resgister\Resgister.cshtml" />
+    <Content Include="Views\Resgister\ResgisterForAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
