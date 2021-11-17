@@ -61,6 +61,7 @@ namespace SecurityInAOMG.Controllers
             cmd.Parameters.AddWithValue("@username", user.username);
             cmd.Parameters.AddWithValue("@password", user.password);
 
+
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
 
