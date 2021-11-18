@@ -49,6 +49,7 @@ namespace SecurityInAOMG.Controllers
         }
 
 
+        [HttpPost]
         public ActionResult ResgisterForAdmin(UserAccount user)
         {
 

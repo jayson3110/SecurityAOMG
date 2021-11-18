@@ -29,6 +29,7 @@ namespace SecurityInAOMG.Controllers
         {
             List<UserAccount> userList = GetGroupUser();
             var getId = userList.Single(m => m.userId == id);
+         
             return View(getId);
         }
 
@@ -37,39 +38,38 @@ namespace SecurityInAOMG.Controllers
         {
             
             SqlCommand cmd = new SqlCommand();
+
+
             List<UserAccount> userList = GetGroupUser();
             var getId = userList.Single(m => m.userId == id);
-            try
-            {
-                con.Open();
-                cmd.CommandText = "update Users set username='" + user.username + "', password = '" + user.password + "', roles ='" + user.roles + "' where userID='" + getId + "' ";
-                cmd.Connection = con;
-                cmd.ExecuteNonQuery();
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e);
-            }
-            finally
-            {
-                con.Close();
-            }
 
-
-
-            /*cmd.Parameters.AddWithValue("@username", user.username);
-            cmd.Parameters.AddWithValue("@password", user.password);
-            cmd.Parameters.AddWithValue("@roles", user.roles);
-            cmd.Parameters.AddWithValue("@userId", user.userId);*/
-
-
-
-
-
-            //con.Close();
-            
+            con.Open();
          
+            cmd.CommandText = "update Users set password='" + user.password + "' , roles='" + user.roles + "' where userID= " + getId.userId + "";
+
+             
+
+            cmd.Connection = con;
+            cmd.ExecuteNonQuery();
+          
+          
+            con.Close();
+          
+
+
+
+           /*cmd.Parameters.AddWithValue("@username", user.username);
+           cmd.Parameters.AddWithValue("@password", user.password);
+           cmd.Parameters.AddWithValue("@roles", user.roles);
+           cmd.Parameters.AddWithValue("@userId", user.userId);*/
+
+
+
+
+
+                //con.Close();
+
+
             return View();
 
         }
@@ -98,9 +98,12 @@ namespace SecurityInAOMG.Controllers
 
                 model.Add(userAccount);
 
+         
+
 
 
             }
+            con.Close();
 
             return model;
 
