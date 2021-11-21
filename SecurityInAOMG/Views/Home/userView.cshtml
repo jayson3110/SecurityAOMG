@@ -27,17 +27,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (System.Data.DataRow dr in ViewBag.data.Rows)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Artist_Name)
+
+                    @dr["Artist_Name"]
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Artist_role)
+
+                    @dr["Artist_role"]
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Artist_contact)
+
+                    @dr["Artist_contact"]
                 </td>
 
             </tr>

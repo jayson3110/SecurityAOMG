@@ -11,7 +11,7 @@ namespace SecurityInAOMG.Controllers
     public class ResgisterController : Controller
     {
         // GET: Resgister
-        SqlConnection con = new SqlConnection("data source=JAYSON\\SQLEXPRESS; database=AOMG; integrated security=SSPI; MultipleActiveResultSets=true");
+        SqlConnection con = new db().con;
         SqlCommand cmd = new SqlCommand();
      
         

@@ -33,28 +33,31 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (System.Data.DataRow dr  in ViewBag.data.Rows)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Artist_Name)
+                 
+                    @dr["Artist_Name"]
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Artist_role)
+                
+                    @dr["Artist_role"]
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Artist_contact)
+                  
+                    @dr["Artist_contact"]
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
 
-    </table>
+        </table>
 
-    <a href="@Url.Action("Logout","Login")" class="btn btn-warning">Logout</a>
-</body>
-</html>
+        <a href="@Url.Action("Logout","Login")" class="btn btn-warning">Logout</a>
+    </body>
+    </html>

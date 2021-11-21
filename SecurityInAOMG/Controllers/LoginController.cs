@@ -10,7 +10,7 @@ namespace SeurityASP.NET.Controllers
 {
     public class LoginController : Controller
     {
-        SqlConnection con = new SqlConnection("data source=JAYSON\\SQLEXPRESS; database=AOMG; integrated security=SSPI; MultipleActiveResultSets=true");
+        SqlConnection con = new db().con;
         SqlCommand cmd1 = new SqlCommand();
         SqlCommand cmd2 = new SqlCommand();
         SqlDataReader dr;
@@ -33,11 +33,16 @@ namespace SeurityASP.NET.Controllers
             string pwd = Collection["password"];
 
 
-            con.Open();
+    
             cmd1.Connection = con;
             cmd2.Connection = con;
+
+            con.Open();
+
             cmd1.CommandText = "select * from Users where username='"+uid+"' and password='"+pwd+ "' and roles='admin' ";
             cmd2.CommandText = "select * from Users where username='" + uid + "' and password='" + pwd + "' and roles='user' ";
+
+
 
             dr = cmd1.ExecuteReader();
             dr2 = cmd2.ExecuteReader();
