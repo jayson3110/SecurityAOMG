@@ -124,11 +124,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ResgisterController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\db.cs" />
+    <Compile Include="Models\UseGroup.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,6 +176,8 @@
     <Content Include="Views\Resgister\ResgisterForAdmin.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Group\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

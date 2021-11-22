@@ -29,9 +29,11 @@ namespace SecurityInAOMG.Controllers
             }
             else if(Session["user"] != null && (int)Session["user"] == 2)
             {
-                model = ViewBag.data = ds.Tables[0];
+                ViewBag.data = ds.Tables[0];
                 return View("userView", model);
             }
+
+          
             else
             {
                 return View("Index");

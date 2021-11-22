@@ -9,6 +9,10 @@
 
 <h2>Administration</h2>
 
+<p>
+    @Html.ActionLink("Roles in Group User", "Index", "Roles")
+</p>
+
 <table class="table">
     <tr>
         <th>
@@ -57,53 +61,103 @@
 
 <br />
 
+
 <h2>User</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.roles)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roles)
+            </th>
+            <th></th>
+        </tr>
 
-    @foreach (var item in Model)
-    {
-
-        //@Html.DisplayFor(modelItem => item.roles)
-        // var admin = new HtmlString("admin");
-        if (item.roles == "user")
+        @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.roles)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
+
+            //@Html.DisplayFor(modelItem => item.roles)
+            // var admin = new HtmlString("admin");
+            if (item.roles == "user")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roles)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+
+
+            }
 
 
         }
 
+ </table>
 
-    }
 
-</table>
+<h2>Editor</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roles)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            //@Html.DisplayFor(modelItem => item.roles)
+            // var admin = new HtmlString("admin");
+            if (item.roles == "editor")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roles)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+
+
+            }
+
+
+        }
+
+    </table>
 
 
 

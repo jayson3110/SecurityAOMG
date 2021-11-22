@@ -23,13 +23,12 @@
     <script type="text/javascript">
             var isRunning = false;
             function Login() {
-                console.log("freak");
                 if (!isRunning) {
                     isRunning = true
                     var uid = $('#txUID').val();
                     var password = $('#txPWD').val();
                     if (uid == '' || password == '') {
-                        $('#ms').html('Vui lòng đăng nhập tài khoản và mật khẩu');
+                        $('#ms').html('Vui lòng đăng nhập lại tài khoản và mật khẩu');
                         isRunning = false;
                         console.log('without' + uid);
                         console.log('without' + password);

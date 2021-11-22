@@ -8,44 +8,45 @@ using System.Data.SqlClient;
 
 namespace SecurityInAOMG.Controllers
 {
-    public class GroupController : Controller
+    public class RolesController : Controller
     {
-       
+        // GET: Roles
         SqlConnection con = new db().con;
-        
+
         // GET: Group
-       
+
         public ActionResult Index()
         {
             if (Session["user"] != null)
             {
-                List<UserAccount> model = new db().GetUserAccount();
+                List<UseGroup> model = new db().GetUserGroup();
                 return View(model);
-            }else
+            }
+            else
             {
                 return Redirect("https://localhost:44357/");
             }
-           
+
         }
 
         public ActionResult Edit(int id)
         {
-            List<UserAccount> userList = new db().GetUserAccount();
-            var getId = userList.Single(m => m.userId == id);
-         
+            List<UseGroup> userList = new db().GetUserGroup();
+            var getId = userList.Single(m => m.Group_user_Id == id);
+
             return View(getId);
         }
 
-        [HttpPost]
-        public ActionResult Edit(UserAccount user, int id)
+       // [HttpPost]
+       /* public ActionResult Edit(UserAccount user, int id)
         {
-            
+
             SqlCommand cmd = new SqlCommand();
 
 
             List<UserAccount> userList = new db().GetUserAccount();
             var getId = userList.Single(m => m.userId == id);
-            
+
             con.Open();
 
             try
@@ -57,7 +58,8 @@ namespace SecurityInAOMG.Controllers
 
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -66,11 +68,12 @@ namespace SecurityInAOMG.Controllers
                 con.Close();
 
             }
-           
+
 
             return View();
 
-        }
-       
+        } */
+
+
     }
 }

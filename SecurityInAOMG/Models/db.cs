@@ -10,7 +10,7 @@ namespace SecurityInAOMG.Models
     public class db
     {
      
-       public SqlConnection con = new SqlConnection("data source=JAYSON\\SQLEXPRESS; database=AOMG; integrated security=SSPI");
+       public SqlConnection con = new SqlConnection("data source=JAYSON\\SQLEXPRESS; database=AOMG; integrated security=SSPI; MultipleActiveResultSets=True");
 
         
         public DataSet GetArtistData()
@@ -31,7 +31,9 @@ namespace SecurityInAOMG.Models
 
         }
 
-        public List<UserAccount> GetGroupUser()
+
+
+        public List<UserAccount> GetUserAccount()
         {
 
             con.Open();
@@ -64,6 +66,40 @@ namespace SecurityInAOMG.Models
             return model;
 
         }
+
+        public List<UseGroup> GetUserGroup()
+        {
+            con.Open();
+            var model = new List<UseGroup>();
+            SqlCommand cmd = new SqlCommand("select * from Group_User ");
+
+            cmd.Connection = con;
+
+
+            SqlDataReader sdr = cmd.ExecuteReader();
+
+            while (sdr.Read())
+            {
+
+                var userGroup = new UseGroup();
+                userGroup.Group_user_Id += (int)sdr["Group_user_Id"];
+                userGroup.Group_user_Name += sdr["Group_user_Name"];
+                userGroup.Roles1 += sdr["Roles1"];
+                userGroup.Roles2 += sdr["Roles2"];
+                userGroup.Roles3 += sdr["Roles3"];
+
+                model.Add(userGroup);
+
+
+            }
+            con.Close();
+
+            return model;
+
+
+        }
+
+
 
     }
 }
