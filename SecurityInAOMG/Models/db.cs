@@ -12,7 +12,7 @@ namespace SecurityInAOMG.Models
      
        public SqlConnection con = new SqlConnection("data source=JAYSON\\SQLEXPRESS; database=AOMG; integrated security=SSPI; MultipleActiveResultSets=True");
 
-        
+        // DataReader
         public DataSet GetArtistData()
         {
 
@@ -26,12 +26,46 @@ namespace SecurityInAOMG.Models
             da.Fill(ds);
 
 
+            con.Close();
+
+
             return ds;
 
 
         }
 
+        // Normal
+        public List<Artist> GetArtistDataNormal()
+        {
 
+            SqlCommand cmd = new SqlCommand("select * from AOMG_Artist ");
+            var model = new List<Artist>();
+            cmd.Connection = con;
+            con.Open();
+
+            SqlDataReader sdr = cmd.ExecuteReader();
+
+            while (sdr.Read())
+            {
+
+                var artist = new Artist();
+                artist.Artist_Name += sdr["Artist_Name"];
+                artist.Artist_role += sdr["Artist_role"];
+                artist.Artist_contact += sdr["Artist_contact"];
+               
+
+                model.Add(artist);
+
+
+
+
+
+            }
+            con.Close();
+
+            return model;
+
+        }
 
         public List<UserAccount> GetUserAccount()
         {
@@ -84,9 +118,9 @@ namespace SecurityInAOMG.Models
                 var userGroup = new UseGroup();
                 userGroup.Group_user_Id += (int)sdr["Group_user_Id"];
                 userGroup.Group_user_Name += sdr["Group_user_Name"];
-                userGroup.Roles1 += sdr["Roles1"];
-                userGroup.Roles2 += sdr["Roles2"];
-                userGroup.Roles3 += sdr["Roles3"];
+                userGroup.Editing += (int)sdr["Editing"];
+                userGroup.Detail += (int)sdr["Detail"];
+                userGroup.Deleting += (int)sdr["Deleting"];
 
                 model.Add(userGroup);
 
@@ -101,5 +135,13 @@ namespace SecurityInAOMG.Models
 
 
 
+
+
+
+
     }
+
+
+
+
 }

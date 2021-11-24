@@ -1,0 +1,254 @@
+﻿@using SecurityInAOMG.Models;
+@model dynamic
+
+@{
+    ViewBag.Title = "editorView";
+    Layout = "~/Views/Shared/_View.cshtml";
+}
+
+<h2>editorView</h2>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Artist Name
+        </th>
+        <th>
+            Artist Role
+        </th>
+        <th>
+            Artist Contact
+        </th>
+        <th></th>
+    </tr>
+    @foreach (UseGroup rolesProvider in Model.RolesGroup)
+    {
+        if (@rolesProvider.Editing == 0 && @rolesProvider.Detail == 1 && @rolesProvider.Deleting == 0)
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else if (@rolesProvider.Editing == 1 && @rolesProvider.Detail == 0 && @rolesProvider.Deleting == 0)
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else if (@rolesProvider.Editing == 0 && @rolesProvider.Detail == 0 && @rolesProvider.Deleting == 1)
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) |
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else if (@rolesProvider.Editing == 1 && @rolesProvider.Detail == 1 && @rolesProvider.Deleting == 0)
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Detail", "Detail", new { /* id=item.PrimaryKey */ })
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else if (@rolesProvider.Editing == 0 && @rolesProvider.Detail == 1 && @rolesProvider.Deleting == 1)
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Detail", "Detail", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Delete", "Detail", new { /* id=item.PrimaryKey */ })
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else if (@rolesProvider.Editing == 1 && @rolesProvider.Detail == 0 && @rolesProvider.Deleting == 1)
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Delete", "Detail", new { /* id=item.PrimaryKey */ })
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else if (@rolesProvider.Editing == 1 && @rolesProvider.Detail == 1 && @rolesProvider.Deleting == 1)
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Detail", "Detail", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Delete", "Detail", new { /* id=item.PrimaryKey */ })
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else
+        {
+            foreach (Artist artist in Model.ArtistData)
+            {
+                <tr>
+                    <td>
+
+                        @artist.Artist_Name
+                    </td>
+                    <td>
+
+                        @artist.Artist_role
+                    </td>
+                    <td>
+
+                        @artist.Artist_contact
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+
+            }
+
+        }
+    }
+
+
+    
+
+</table>
+
+<a href="@Url.Action("Logout","Login")" class="btn btn-warning">Logout</a>

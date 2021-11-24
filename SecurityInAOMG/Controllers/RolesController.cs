@@ -31,31 +31,33 @@ namespace SecurityInAOMG.Controllers
 
         public ActionResult Edit(int id)
         {
-            List<UseGroup> userList = new db().GetUserGroup();
-            var getId = userList.Single(m => m.Group_user_Id == id);
+            List<UseGroup> userGroup = new db().GetUserGroup();
+            var getId = userGroup.Single(m => m.Group_user_Id == id);
+
+        
 
             return View(getId);
         }
 
-       // [HttpPost]
-       /* public ActionResult Edit(UserAccount user, int id)
+        [HttpPost]
+       public ActionResult Edit(UseGroup useGroup, int id)
         {
 
             SqlCommand cmd = new SqlCommand();
 
 
-            List<UserAccount> userList = new db().GetUserAccount();
-            var getId = userList.Single(m => m.userId == id);
+            List<UseGroup> userGroup = new db().GetUserGroup();
+            var getId = userGroup.Single(m => m.Group_user_Id == id);
+
+           
 
             con.Open();
 
             try
             {
-
-                cmd.CommandText = "update Users set password='" + user.password + "' , roles='" + user.roles + "' where userID= " + getId.userId + "";
-
-
-
+              
+                cmd.CommandText = "update Group_User set Editing='" + useGroup.Editing + "' , Detail='" + useGroup.Detail + "', Deleting='" + useGroup.Deleting + "' where Group_user_Id= " + getId.Group_user_Id + "";
+             
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
             }
@@ -72,7 +74,7 @@ namespace SecurityInAOMG.Controllers
 
             return View();
 
-        } */
+        } 
 
 
     }

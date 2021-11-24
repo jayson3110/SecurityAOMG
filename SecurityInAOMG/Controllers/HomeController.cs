@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using SecurityInAOMG.Models;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Dynamic;
 
 namespace SecurityInAOMG.Controllers
 {
@@ -15,7 +15,7 @@ namespace SecurityInAOMG.Controllers
         public ActionResult Index()
         {
 
-            List<Artist> model = null;
+          
 
             db showData = new db();
             DataSet ds = showData.GetArtistData();
@@ -24,13 +24,23 @@ namespace SecurityInAOMG.Controllers
             {
                 // int VIPNumber = (int)Session["user"];
                 ViewBag.data = ds.Tables[0];
-                return View("adminView", model);
+                return View("adminView");
 
             }
             else if(Session["user"] != null && (int)Session["user"] == 2)
             {
                 ViewBag.data = ds.Tables[0];
-                return View("userView", model);
+                return View("userView");
+            }
+            else if (Session["user"] !=null && (int)Session["user"] == 3)
+            {
+
+                db data = new db();
+                dynamic mymodel = new ExpandoObject();
+                mymodel.RolesGroup = data.GetUserGroup();
+                mymodel.ArtistData = data.GetArtistDataNormal();
+
+                return View("editorView", mymodel);
             }
 
           

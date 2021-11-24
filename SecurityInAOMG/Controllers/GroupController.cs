@@ -52,9 +52,6 @@ namespace SecurityInAOMG.Controllers
             {
 
                 cmd.CommandText = "update Users set password='" + user.password + "' , roles='" + user.roles + "' where userID= " + getId.userId + "";
-
-
-
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
             }catch(Exception e)
@@ -67,7 +64,6 @@ namespace SecurityInAOMG.Controllers
 
             }
            
-
             return View();
 
         }

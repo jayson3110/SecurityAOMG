@@ -62,10 +62,6 @@ namespace SeurityASP.NET.Controllers
 
 
 
-
-
-
-
             dr = cmd1.ExecuteReader();
             dr2 = cmd2.ExecuteReader();
             dr3 = cmd3.ExecuteReader();

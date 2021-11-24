@@ -9,9 +9,23 @@ namespace SecurityInAOMG.Models
     {
         public int Group_user_Id { get; set; }
         public string Group_user_Name { get; set; }
-        public string Roles1 { get; set; }
-        public string Roles2 { get; set; }
-        public string Roles3 { get; set; }
+ 
+
+        public int Editing { get; set; }
+  
+
+        public int Detail { get; set; }
+
+        public int Deleting { get; set; }
+
+
+     
+
+      
+    
 
     }
+
+   
 }
+  

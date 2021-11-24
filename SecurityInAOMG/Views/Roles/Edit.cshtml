@@ -1,4 +1,5 @@
-﻿@model SecurityInAOMG.Models.UseGroup
+﻿@using SecurityInAOMG.Models;
+@model SecurityInAOMG.Models.UseGroup
 
 @{
     ViewBag.Title = "Edit";
@@ -8,43 +9,40 @@
 <h2>Edit</h2>
 
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>UseGroup</h4>
         <hr />
 
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Group_user_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Editing, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Group_user_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Group_user_Name, "", new { @class = "text-danger" })
+
+                @Html.EditorFor(model => model.Editing, new {htmlAttributes = new { @class = "form-control", min="0", max="1" } })
+              
+                @Html.ValidationMessageFor(model => model.Editing, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Roles1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Roles1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Roles1, "", new { @class = "text-danger" })
+
+                @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control", min = "0", max = "1" } })
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Roles2, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Roles2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Roles2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Roles3, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Roles3, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Roles3, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Deleting, new { htmlAttributes = new { @class = "form-control", min = "0", max = "1" } })
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
             </div>
         </div>
 
