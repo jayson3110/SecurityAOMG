@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -52,24 +52,90 @@ namespace SecurityInAOMG.Controllers
            
 
             con.Open();
+          
 
-            try
+            switch (useGroup.CheckedEdit)
             {
+                case true:
+                   
+
+                        cmd.CommandText = "update Group_User set Editing='" + useGroup.Editing + "'  where Group_user_Id= " + getId.Group_user_Id + "";
+
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                
+                        
+                    
+                       break;
+                case false:
+                   
+                        cmd.CommandText = "update Group_User set Editing='Null'  where Group_user_Id= " + getId.Group_user_Id + "";
+
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                  
+                      break;
+
+            }
+
+            switch (useGroup.CheckedDetail)
+            {
+                case true:
+
+                        cmd.CommandText = "update Group_User set  Detail='" + useGroup.Detail + "'  where Group_user_Id= " + getId.Group_user_Id + "";
+
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                   
+                       
+
+                    
+                    break;
+                case false:
+                   
+                        cmd.CommandText = "update Group_User set Detail='Null'    where Group_user_Id= " + getId.Group_user_Id + "";
+
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                    
+                   
+
+                    
+
+                    break;
+
+            }
+
+            switch (useGroup.CheckedDelete)
+            {
+                case true:
+                   
+                        cmd.CommandText = "update Group_User set  Deleting='" + useGroup.Deleting + "'  where Group_user_Id= " + getId.Group_user_Id + "";
+
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                  
+                    
+
+                   
+                    break;
+                case false:
+                    
+
+                        cmd.CommandText = "update Group_User set Deleting='Null'  where Group_user_Id= " + getId.Group_user_Id + "";
+
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                  
               
-                cmd.CommandText = "update Group_User set Editing='" + useGroup.Editing + "' , Detail='" + useGroup.Detail + "', Deleting='" + useGroup.Deleting + "' where Group_user_Id= " + getId.Group_user_Id + "";
-             
-                cmd.Connection = con;
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                con.Close();
+
+                    
+                    break;
 
             }
+
+            con.Close();
+
 
 
             return View();

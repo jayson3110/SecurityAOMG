@@ -26,7 +26,7 @@
     </tr>
     @foreach (UseGroup rolesProvider in Model.RolesGroup)
     {
-        if (@rolesProvider.Editing == 0 && @rolesProvider.Detail == 1 && @rolesProvider.Deleting == 0)
+        if (@rolesProvider.Editing == "Null" && @rolesProvider.Detail == "Detail" && @rolesProvider.Deleting == "Null")
         {
             foreach (Artist artist in Model.ArtistData)
             {
@@ -53,7 +53,7 @@
             }
 
         }
-        else if (@rolesProvider.Editing == 1 && @rolesProvider.Detail == 0 && @rolesProvider.Deleting == 0)
+        else if (@rolesProvider.Editing == "" && @rolesProvider.Detail == 0 && @rolesProvider.Deleting == 0)
         {
             foreach (Artist artist in Model.ArtistData)
             {

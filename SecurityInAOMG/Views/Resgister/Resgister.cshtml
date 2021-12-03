@@ -2,53 +2,49 @@
 
 @{
     ViewBag.Title = "Resgister";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_View.cshtml";
 }
 
-<h2>Resgister</h2>
+<link rel="stylesheet" type="text/css" href="~/Content/TaoNhom.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>UserAccount</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.userId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.userId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<h2>Tạo Nhóm</h2>
+
+<div class="buttonStyle">
+    <button type="button " onclick="location.href='@Url.Action("Edit", "Roles")'">Quản lý nhóm </button>
+    <button type="button" class="active">Tạo nhóm</button>
+</div>
+
+<hr class="hrtag">
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-25">
+                <label for="MaNhom">Mã nhóm <span style="color:red;">(*)</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="MaNhom" name="MaNhom" placeholder="Mã nhóm...">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="TenNhom">Tên Nhóm <span style="color:red;">(*)</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="TenNhom" name="TenNhom" placeholder="Tên Nhóm..">
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    </form>
 
-     
+</div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Home", "Index", "Home")
+<div class="buttonStyle2">
+    <button type="button ">Thêm</button>
+    <button type="button">Làm mới</button>
 </div>

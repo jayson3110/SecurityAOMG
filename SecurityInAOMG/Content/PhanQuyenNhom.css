@@ -1,0 +1,68 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#customers {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 1px 1px 1px 1px #999;
+}
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 12px;
+    }
+
+
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        color: #808DFF;
+    }
+
+    #customers td {
+        padding-left: 25px
+    }
+
+
+#Group {
+}
+
+#group {
+    width: 900px;
+    height: 27px;
+    position: absolute;
+    left: 270px;
+    top: 102px;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px #999;
+}
+
+
+   
+
+
+.buttonStyle {
+    text-align: center;
+}
+
+    .buttonStyle button {
+        margin: 5px;
+        background-color: #1765FF;
+        border: none;
+        color: white;
+        padding: 11px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }

@@ -118,9 +118,9 @@ namespace SecurityInAOMG.Models
                 var userGroup = new UseGroup();
                 userGroup.Group_user_Id += (int)sdr["Group_user_Id"];
                 userGroup.Group_user_Name += sdr["Group_user_Name"];
-                userGroup.Editing += (int)sdr["Editing"];
-                userGroup.Detail += (int)sdr["Detail"];
-                userGroup.Deleting += (int)sdr["Deleting"];
+                userGroup.Editing += sdr["Editing"];
+                userGroup.Detail += sdr["Detail"];
+                userGroup.Deleting += sdr["Deleting"];
 
                 model.Add(userGroup);
 

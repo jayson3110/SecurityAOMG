@@ -1,62 +1,110 @@
-﻿@using SecurityInAOMG.Models;
+﻿
 @model SecurityInAOMG.Models.UseGroup
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_View.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="~/Content/PhanQuyenNhom.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
 
 <h2>Edit</h2>
 
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>UseGroup</h4>
-        <hr />
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Editing, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+<div class="form-horizontal">
+    <hr />
 
-                @Html.EditorFor(model => model.Editing, new {htmlAttributes = new { @class = "form-control", min="0", max="1" } })
-              
-                @Html.ValidationMessageFor(model => model.Editing, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
 
-                @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control", min = "0", max = "1" } })
-                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Deleting, new { htmlAttributes = new { @class = "form-control", min = "0", max = "1" } })
-                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+    <div class="buttonStyle">
+        <button type="button" id="btnSubmit">Lưu </button>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <h3>Tên Nhóm quyền</h3>
+    <br />
+    <p> @Html.EditorFor(model => model.Group_user_Name, new { htmlAttributes = new { @class = "form-control" } })</p>
+    <br />
+
+    <h3>Chức năng </h3>
+
+    <br />
+
+    <div class="table1">
+        <table id="customers">
+            <tr>
+                <th> @Html.LabelFor(model => model.Editing, htmlAttributes: new { @class = "control-label col-md-2" }) </th>
+                <th> @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })</th>
+                <th>@Html.LabelFor(model => model.Deleting, htmlAttributes: new { @class = "control-label col-md-2" })</th>
+                <th>Special</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="edit" name="Edit" value="editing" />&nbsp;</td>
+                <td><input type="checkbox" id="detail" name="Detail" value="reading" />&nbsp;</td>
+                <td><input type="checkbox" id="delete" name="Delete" value="deleting" />&nbsp;</td>
+                <td><input type="checkbox" id="special" name="Special" value="special" />&nbsp;</td>
+
+            </tr>
+        </table>
+    </div>
 </div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+
+    var edit = $('#edit').val();
+    var detail = $('#detail').val();
+    var deletee = $('#delete').val();
+
+    var checkeEdit = document.getElementById("edit");
+    var checkeDetail = document.getElementById("detail");
+    var checkeDelete = document.getElementById("delete");
+    $(document).ready(function () {
+        $(function () {
+            $('#btnSubmit').click(function (event) {
+
+                console.log(edit);
+
+                console.log(checkeEdit.checked);
+                event.preventDefault();
+                var roles = {
+                    Editing: edit,
+                    Detail: detail,
+                    Deleting: deletee,
+
+                    CheckedEdit: checkeEdit.checked,
+                    CheckedDetail: checkeDetail.checked,
+                    CheckedDelete: checkeDelete.checked,
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Roles/Edit/1",
+                    data: JSON.stringify(roles),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        alert(data.msg);
+                    },
+                    error: function () {
+                        alert("Error occured!!")
+                    }
+                })
+            })
+        })
+    })
+
+
+
+</script>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -7,66 +7,41 @@
 
 }
 
-<h2>Administration</h2>
 
-<p>
-    @Html.ActionLink("Roles in Group User", "Index", "Roles")
-</p>
+<link rel="stylesheet" type="text/css" href="~/Content/GroupStyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.roles)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-
-        //@Html.DisplayFor(modelItem => item.roles)
-        // var admin = new HtmlString("admin");
-        if (item.roles == "admin")
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.roles)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.userId}) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 
-        }
+
+<br/>
+
+<div>
+    <form id="Group">
+        <label for="cars">Nhóm: </label>
+        <select name="group" id="group">
+            <option value="group1">Group1</option>
+            <option value="group2">Group 2</option>
+            <option value="group3">Group 3</option>
+            <option value="group4">Group 4</option>
+        </select>
+
+    </form>
+</div>
 
 
-    }
+<br/>
 
-</table>
+<div class="table1">
+    <p style="color:#013DB5; font-size: 20px; font-weight: bold;">Người dùng là Admin</p>
 
-<br />
-
-
-<h2>User</h2>
-
-    <table class="table">
+    <table id="customers">
         <tr>
             <th>
+                <input type="checkbox" name="name1" />&nbsp;
                 @Html.DisplayNameFor(model => model.username)
             </th>
             <th>
@@ -75,7 +50,63 @@
             <th>
                 @Html.DisplayNameFor(model => model.roles)
             </th>
-            <th></th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            //@Html.DisplayFor(modelItem => item.roles)
+            // var admin = new HtmlString("admin");
+            if (item.roles == "admin")
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="name1" />&nbsp;
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roles)
+                    </td>
+
+                </tr>
+
+
+            }
+
+
+        }
+
+    </table>
+    <br />
+
+   
+
+</div>
+
+<br />
+<br />
+
+
+<div class="table1">
+    <p style="color:#013DB5; font-size: 20px; font-weight: bold;">Người dùng là User</p>
+
+    <table id="customers">
+        <tr>
+            <th>
+                <input type="checkbox" name="name1" />&nbsp;
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roles)
+            </th>
+
         </tr>
 
         @foreach (var item in Model)
@@ -87,6 +118,7 @@
             {
                 <tr>
                     <td>
+                        <input type="checkbox" name="name1" />&nbsp;
                         @Html.DisplayFor(modelItem => item.username)
                     </td>
                     <td>
@@ -95,11 +127,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.roles)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
+
                 </tr>
 
 
@@ -108,14 +136,28 @@
 
         }
 
- </table>
+    </table>
+    <br />
 
 
-<h2>Editor</h2>
+</div>
 
-    <table class="table">
+<br />
+<br />
+
+
+<div class="table1">
+    <div class="buttonStyle">
+        <button type="button">Thêm </button>
+        <button type="button">Xoá</button>
+    </div>
+
+    <br><br>
+    <p style="color:#013DB5; font-size: 20px; font-weight: bold;">Người dùng thuộc nhóm Editor</p>
+    <table id="customers">
         <tr>
             <th>
+                <input type="checkbox" name="name1" />&nbsp;
                 @Html.DisplayNameFor(model => model.username)
             </th>
             <th>
@@ -124,7 +166,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.roles)
             </th>
-            <th></th>
+
         </tr>
 
         @foreach (var item in Model)
@@ -136,6 +178,7 @@
             {
                 <tr>
                     <td>
+                        <input type="checkbox" name="name1" />&nbsp;
                         @Html.DisplayFor(modelItem => item.username)
                     </td>
                     <td>
@@ -144,11 +187,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.roles)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
+
                 </tr>
 
 
@@ -158,6 +197,10 @@
         }
 
     </table>
+    <br />
+
+
+</div>
 
 
 

@@ -1,0 +1,97 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.buttonStyle {
+    text-align: center;
+    display: flex;
+}
+
+    .buttonStyle button {
+        margin: 5px;
+        border: none;
+        color: black;
+        padding: 15px 32px;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+.active {
+    background-color: #1765FF;
+    color: white;
+}
+
+.hrtag {
+    border: 2px solid #1765FF;
+    width: 100%;
+}
+
+
+
+input[type=text] {
+    width: 112%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+
+
+.container {
+    border-radius: 5px;
+}
+
+.col-25 {
+    float: left;
+    width: 15%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    padding-left: 100px;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+.buttonStyle2 {
+    padding-top: 50px;
+    text-align: center;
+}
+
+    .buttonStyle2 button {
+        margin: 5px;
+        background-color: #1765FF;
+        border: none;
+        color: black;
+        padding: 12px 30px;
+        width: 150px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
